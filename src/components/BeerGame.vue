@@ -11,10 +11,14 @@
       :style="{ gridColumnStart: column, gridRowStart: row }"
     ></div>
     <div class="menu" v-if="!gameInProgress">
-      <button class="start-game" @click="startNewGame()">Start Game</button>
+      <p class="instructions" v-if="!displayScore">
+        Try to grab all the beers as they appear on the screen by clicking on
+        them!
+      </p>
       <p class="score" v-if="displayScore">
         You grabbed {{ score }} beers - Cheers!
       </p>
+      <button class="start-game" @click="startNewGame()">Start Game</button>
     </div>
   </main>
 </template>
@@ -124,6 +128,14 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.instructions {
+  font-size: 1.5rem;
+  font-family: monospace;
+
+  max-width: 50%;
+  text-align: center;
 }
 
 .start-game {
